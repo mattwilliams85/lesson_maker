@@ -1,4 +1,34 @@
-<h1> Epicodus </h1>
+<div class="col-md-4">
 
-<h3> Create New Lesson </h3>
+  <h1> Epicodus </h1>
+
+  <h3> Create New Lesson </h3>
+
+  <form role="form" action="/" method="post">
+    <div class="form-group">
+      <label for="lesson_name"> Lesson Name: </label>
+      <input id="lesson_name" class="form-control" type="text" name='lesson[name]' placeholder="Type here...">
+      <label for="lesson_number"> Lesson Number: </label>
+      <input id="lesson_number" class="form-control" type="text" name='lesson[number]' placeholder="#...">
+    </div>
+    <button class="btn btn-success btn-sm"> Create Lesson </button>
+  </form>
+
+  <% if @lesson.errors.any? %>
+    <% @lesson.errors.full_messages.each do |message| %>
+     <h5 class="red"> <%= message %> </h5>
+    <% end %>
+  <% end %>
+  <h3> Lessons </h3>
+
+  <h5> <%= "< None >" if @lessons.first == nil %> </h5>
+
+  <% @lessons.order('number').each do |lesson| %>
+    <p> <%= "#{lesson.number}." %> <%= lesson.name %> </p>
+  <% end %>
+
+</div>
+
+
+
 
