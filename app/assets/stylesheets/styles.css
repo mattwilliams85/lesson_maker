@@ -1,4 +1,9 @@
+
 h1 {
+  color:#636363;
+}
+
+h4 {
   color:#636363;
 }
 
@@ -7,15 +12,70 @@ h1 {
 }
 
 body {
-    background-color: #F6F5F7;
+  background-color: #F6F5F7;
 }
 
 input[type="text"], textarea {
-
   background-color : #F6F5F7;
-
 }
+
+/*.nav-tabs>li>a {
+  background-color: #333333;
+  border-color: #777777;
+  color:#fff;
+}*/
 
 .red {
   color:red;
+}
+
+a {
+  color: inherit;
+}
+
+.underline:hover {
+  color:orange;
+}
+
+.underline {
+  text-decoration: underline;
+  color:gray;
+}
+
+#big_box {
+  border: 1px black solid;
+  padding:10px;
+}
+
+#small_box {
+  border: 1px black solid;
+  padding:5px;
+  width:7%;
+}
+
+ul {
+  width:100%;
+}
+
+.inline {
+    float: left;
+    list-style: none;
+}
+
+
+#lesson_content {
+  height:250px;
+    background-color: #F6F5F7;
+}
+
+.footer {
+position: absolute;
+bottom: 0;
+padding:10px 100% 0px 0;
+border-top:solid 1px black;
+}
+
+#footer_link  {
+  font-size:0.8em;
+  margin-left:50px;
 }

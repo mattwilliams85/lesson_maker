@@ -4,7 +4,7 @@
 
   <h3> Create New Lesson </h3>
 
-  <form role="form" action="/" method="post">
+  <form role="form" action="/<% @lesson.id %>" method="post">
     <div class="form-group">
       <label for="lesson_name"> Lesson Name: </label>
       <input id="lesson_name" class="form-control" type="text" name='lesson[name]' placeholder="Type here...">
@@ -24,10 +24,18 @@
   <h5> <%= "< None >" if @lessons.first == nil %> </h5>
 
   <% @lessons.order('number').each do |lesson| %>
-    <p> <%= "#{lesson.number}." %> <%= lesson.name %> </p>
+    <p> <%= "#{lesson.number}." %>
+    <a href="/lessons/<%= lesson.id%>" class="lesson_name"><%= lesson.name %> </a>
+    <a href="/<%= lesson.id %>"
+                  data-method="delete"
+                  data-confirm="Are you sure?"> <span class="underline"> Delete </span> </a>
+    <a href="/show/<%= lesson.id%>"> &nbsp; <span class="underline"> Show </span> </a> </p>
   <% end %>
 
 </div>
+
+
+
 
 
 

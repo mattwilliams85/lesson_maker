@@ -1,0 +1,15 @@
+<div>
+  <h1> <%= @lesson.name %> </h1>
+  <h4> Lesson <%= @lesson.number %> </h4>
+  <a href="/edit/<%=@lesson.id%>"><span class="underline"> Edit </span> </a>
+</div>
+
+<ul class="nav nav-tabs">
+  <li class="active"> <a> Text </a> </li>
+</ul>
+
+<div id="big_box">
+   <h5> <%= "< Empty >" if @lesson.content == nil %> </h5>
+   <h5> <%= @lesson.content %> </h5>
+</div>
+
