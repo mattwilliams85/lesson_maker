@@ -1,11 +1,41 @@
- <h1> Table of Contents </h1>
 
-<ul>
- <% @lessons.order('number').each do |lesson| %>
-  <li>
-    <a href="/content_view/<%= lesson.id%>" class="lesson_name"><span class="red"><%= lesson.name %> <span></a>
-  </li>
- <% end %>
+<script type="text/javascript">
+function swap(targetId){
+  if (document.getElementById){
+        target = document.getElementById(targetId);
+            if (target.style.display == "none"){
+                target.style.display = "";
+            } else{
+                target.style.display = "none";
+            }
+  }
+}
+
+</script>
+
+<h1> Table of Contents </h1>
+
+<div id="navigation">
+  <% @chapters.order('number').each do |chapter| %>
+    <li>
+      <a href="#" onclick="swap('<%= chapter.id %>');return false;" class="red"><%= chapter.name %></a>
+        <% if chapter.lessons.first != nil %>
+          <ul id="<%= chapter.id %>" style="display: none;">
+            <% chapter.lessons.order('number').each do |lesson| %>
+              <li><a href="/content_view/<%= lesson.id %>"> <%= lesson.name %> </a></li>
+            <% end %>
+          </ul>
+        <% end %>
+    </li>
+  <% end %>
+</div>
+
+
+<div class="navbar navbar-fixed-bottom" id="push_up">
+  <div id="copyright" class="container">
+    <p>© 2014 <a href="/view" class="red">Epicodus</a>, Inc.</p>
+  </div>
+</div>
 
 <nav class="navbar navbar-fixed-bottom" role="navigation" id="nav1">
   <div class="container-fluid">

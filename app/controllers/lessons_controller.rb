@@ -1,22 +1,30 @@
 class LessonsController < ApplicationController
 
-  def index
-    @lesson = Lesson.new
+  def new_lesson
+    @chapters = Chapter.all
+    @chapter = Chapter.find(params[:id])
     @lessons = Lesson.all
-    render('/lessons/index.html.erb')
+    @lesson = Lesson.new
+    render('/lessons/new_lesson.html.erb')
   end
 
   def create
+    @chapters = Chapter.all
+    @chapter = Chapter.find(params[:id])
     @lessons = Lesson.all
-    @lesson = Lesson.create(params[:lesson])
-    render('/lessons/index.html.erb')
+    @lesson = Lesson.create(:name => params[:name],
+                            :number => params[:number],
+                            :chapter_id => @chapter.id)
+    render('/lessons/new_lesson.html.erb')
   end
 
   def delete
+    @chapters = Chapter.all
+    @chapter = Chapter.find(params[:chapter_id])
     @lessons = Lesson.all
     @lesson = Lesson.find(params[:id])
     @lesson.destroy
-    render('/lessons/index.html.erb')
+    render('/lessons/new_lesson.html.erb')
   end
 
   def show
@@ -38,6 +46,7 @@ class LessonsController < ApplicationController
   end
 
   def view
+    @chapters = Chapter.all
     @lessons = Lesson.all
     render('/lessons/table_of_contents.html.erb')
   end

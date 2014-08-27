@@ -1,0 +1,90 @@
+<div class="col-md-4">
+
+  <h1> Epicodus </h1>
+
+  <h3> Create New Chapter </h3>
+
+  <form role="form" action="/" method="post">
+    <div class="form-group">
+      <label for="chapter_name"> Chapter Name: </label>
+      <input id="chapter_name" class="form-control" type="text" name='chapter[name]' placeholder="Type here...">
+      <label for="lesson_number" id="lesson_label"> Chapter Number: </label>
+      <input id="lesson_number" class="form-control" type="text" name='chapter[number]' placeholder="#...">
+    </div>
+    <button class="btn btn-success btn-sm"> Create Chapter </button>
+  </form>
+
+  <h3> Chapters </h3>
+
+  <h5> <%= "< None >" if @chapters.first == nil %> </h5>
+
+  <% @chapters.order('number').each do |chapter| %>
+    <p> <%= "#{chapter.number}." %>
+      <a href="/chapter/<%= chapter.id %>"> <span class="name"> <%= chapter.name %> </span></a> -
+     <a href="/<%= chapter.id %>"
+                    data-method="delete">
+                    <span class="underline"> Delete </span>
+      </a>
+    </p>
+  <% end %>
+
+</div>
+
+<div class="col-md-5 col-md-offset-2">
+
+  <h2> <%= @chapter.name %> Chapter</h2>
+  <h3> Add New Lesson </h3>
+  <form role="form" action="/<%= @chapter.id %>" method="post">
+    <div class="form-group">
+      <label for="lesson_name"> Lesson Name: </label>
+      <input id="lesson_name" class="form-control" type="text" name='name' placeholder="Type here...">
+      <label for="lesson_number" id="lesson_label"> Lesson Number: </label>
+      <input id="lesson_number" class="form-control" type="text" name='number' placeholder="#...">
+    </div>
+    <button class="btn btn-success btn-sm"> Create Lesson </button>
+  </form>
+
+  <% if @lesson.errors.any? %>
+    <% @lesson.errors.full_messages.each do |message| %>
+     <h5 class="red"> <%= message %> </h5>
+    <% end %>
+  <% end %>
+  <h3> Lessons </h3>
+
+  <h5> <%= "< None >" if @chapter.lessons.first == nil %> </h5>
+
+  <% @chapter.lessons.order('number').each do |lesson| %>
+    <p> <%= "#{lesson.number}." %>
+      <span id="lesson_name"> <%= lesson.name %> - </span>
+      <a href="/<%= @chapter.id %>/<%= lesson.id %>"
+                    data-method="delete">
+                    <span class="underline"> Delete </span>
+      </a>
+      <a href="/show/<%= lesson.id%>">  <span class="underline" id="show"> View </span>
+      </a>
+    </p>
+  <% end %>
+
+</div>
+
+
+<div class="navbar navbar-fixed-bottom" id="push_up">
+  <div id="copyright" class="container">
+    <p>© 2014 <a href="/view" class="red">Epicodus</a>, Inc.</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom" role="navigation" id="nav1">
+  <div class="container-fluid">
+    <div class="navbar-footer">
+      <a class="navbar-brand tab_color"  href="/view">Table of Contents</a>
+      <p class="navbar-text navbar-right tab_color"><a  href="/" id="lesson_manager">Lesson Manager</a></p>
+    </div>
+  </div>
+
+
+
+
+
+
+
