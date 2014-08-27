@@ -80,6 +80,7 @@ a {
   color:#636363;
   font-size:1em;
   margin-right:15px;
+  padding-right:10px;
 }
 
 #nav1 {
@@ -110,4 +111,8 @@ a {
 
 #show {
   padding-left:8px;
+}
+
+.navbar {
+  background-color:white;
 }
