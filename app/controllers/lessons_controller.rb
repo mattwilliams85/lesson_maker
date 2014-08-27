@@ -36,4 +36,17 @@ class LessonsController < ApplicationController
                    :number => params[:number])
     render('/lessons/show.html.erb')
   end
+
+  def view
+    @lessons = Lesson.all
+    render('/lessons/table_of_contents.html.erb')
+  end
+
+  def content_view
+    @lesson = Lesson.find(params[:id])
+    @countup = @lesson.id
+    @countdown = @lesson.id
+    render('/lessons/student_view.html.erb')
+  end
+
 end

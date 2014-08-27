@@ -1,0 +1,42 @@
+<div>
+  <h1> <%= @lesson.name %> </h1>
+  <h4> Lesson <%= @lesson.number %> </h4>
+</div>
+
+<ul class="nav nav-tabs">
+  <li class="active"> <a> Text </a> </li>
+</ul>
+
+<div id="content_box">
+   <h5> <%= "< Empty >" if @lesson.content == nil %> </h5>
+   <h5> <%= @lesson.content %> </h5>
+</div>
+
+
+<nav class="navbar navbar-fixed-bottom" role="navigation" id="nav1">
+  <div class="container-fluid">
+    <div class="navbar-footer">
+      <a class="navbar-brand tab_color"  href="/view">Table of Contents</a>
+
+    <div class="middle">
+      <% until @countdown == 0 %>
+        <% @countdown -= 1 %>
+        <% if  Lesson.find_by(:id => @countdown) != nil %>
+          <a class="navbar-brand tab_color"  href="/content_view/<%= @countdown %>">Previous Lesson</a>
+          <% @countdown = 0 %>
+        <% end %>
+      <% end %>
+
+
+      <% until @countup == 100 %>
+        <% @countup += 1 %>
+        <% if  Lesson.find_by(:id => @countup) != nil %>
+          <a class="navbar-brand tab_color"  href="/content_view/<%= @countup %>">Next Lesson</a>
+          <% @countup = 100 %>
+        <% end %>
+      <% end %>
+    </div>
+
+       <p class="navbar-text navbar-right tab_color"><a  href="/" id="lesson_manager">Lesson Manager</a></p>
+    </div>
+  </div>

@@ -1,4 +1,4 @@
-<div>
+<div id="edit_link">
   <h1> <%= @lesson.name %> </h1>
   <h4> Lesson <%= @lesson.number %> </h4>
   <a href="/edit/<%=@lesson.id%>"><span class="underline"> Edit </span> </a>
@@ -8,8 +8,19 @@
   <li class="active"> <a> Text </a> </li>
 </ul>
 
-<div id="big_box">
+<div id="show_box">
    <h5> <%= "< Empty >" if @lesson.content == nil %> </h5>
    <h5> <%= @lesson.content %> </h5>
 </div>
 
+<div id="copyright">
+  <p>© 2014 <a href="/view" class="red">Epicodus</a>, Inc.</p>
+</div>
+
+<nav class="navbar navbar-fixed-bottom" role="navigation" id="nav1">
+  <div class="container-fluid">
+    <div class="navbar-footer">
+      <a class="navbar-brand tab_color"  href="/view">Table of Contents</a>
+      <p class="navbar-text navbar-right tab_color"><a  href="/" id="lesson_manager">Lesson Manager</a></p>
+    </div>
+  </div>

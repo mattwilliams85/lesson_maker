@@ -8,7 +8,7 @@
     <div class="form-group">
       <label for="lesson_name"> Lesson Name: </label>
       <input id="lesson_name" class="form-control" type="text" name='lesson[name]' placeholder="Type here...">
-      <label for="lesson_number"> Lesson Number: </label>
+      <label for="lesson_number" id="lesson_label"> Lesson Number: </label>
       <input id="lesson_number" class="form-control" type="text" name='lesson[number]' placeholder="#...">
     </div>
     <button class="btn btn-success btn-sm"> Create Lesson </button>
@@ -25,14 +25,25 @@
 
   <% @lessons.order('number').each do |lesson| %>
     <p> <%= "#{lesson.number}." %>
-    <a href="/lessons/<%= lesson.id%>" class="lesson_name"><%= lesson.name %> </a>
-    <a href="/<%= lesson.id %>"
-                  data-method="delete"
-                  data-confirm="Are you sure?"> <span class="underline"> Delete </span> </a>
-    <a href="/show/<%= lesson.id%>"> &nbsp; <span class="underline"> Show </span> </a> </p>
+      <span id="lesson_name"> <%= lesson.name %> - </span>
+      <a href="/<%= lesson.id %>"
+                    data-method="delete">
+                    <span class="underline"> Delete </span>
+      </a>
+      <a href="/show/<%= lesson.id%>">  <span class="underline" id="show"> Show </span>
+      </a>
+    </p>
   <% end %>
 
 </div>
+
+<nav class="navbar navbar-fixed-bottom" role="navigation" id="nav1">
+  <div class="container-fluid">
+    <div class="navbar-footer">
+      <a class="navbar-brand tab_color"  href="/view">Table of Contents</a>
+      <p class="navbar-text navbar-right tab_color"><a  href="/" id="lesson_manager">Lesson Manager</a></p>
+    </div>
+  </div>
 
 
 

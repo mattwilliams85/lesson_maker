@@ -1,0 +1,16 @@
+ <h1> Table of Contents </h1>
+
+<ul>
+ <% @lessons.order('number').each do |lesson| %>
+  <li>
+    <a href="/content_view/<%= lesson.id%>" class="lesson_name"><span class="red"><%= lesson.name %> <span></a>
+  </li>
+ <% end %>
+
+<nav class="navbar navbar-fixed-bottom" role="navigation" id="nav1">
+  <div class="container-fluid">
+    <div class="navbar-footer">
+      <a class="navbar-brand tab_color"  href="/view">Table of Contents</a>
+      <p class="navbar-text navbar-right tab_color"><a  href="/" id="lesson_manager">Lesson Manager</a></p>
+    </div>
+  </div>

@@ -1,5 +1,5 @@
 <div>
-  <h1> <%= @lesson.name %> </h1>
+  <h1> <%= @lesson.number %> </h1>
   <h4> Lesson <%= @lesson.number %> </h4>
 </div>
 
@@ -15,12 +15,20 @@
       <label for="lesson_content"> Lesson Description: </label>
       <textarea rows="10" cols="50" id="lesson_content" name="content"  class="form-control"  type="text" name="content"><%= @lesson.content %></textarea>
       <label for="lesson_name"> Lesson Name: </label>
-      <input id="lesson_name" class="form-control" type="text" name='name' placeholder="Type here...">
+      <input id="lesson_name" class="form-control" type="text" name='name' value=" <%= @lesson.name %> ">
       <label for="lesson_number"> Lesson Number: </label>
-      <input id="lesson_number" class="form-control" type="text" name='number' placeholder="#...">
+      <input id="lesson_number" class="form-control" type="text" name='number' value="<%= @lesson.number %>">
     </div>
     <button class="btn btn-success btn-sm"> Update </button>
   </form>
 
 </div>
 
+
+<nav class="navbar navbar-fixed-bottom" role="navigation" id="nav1">
+  <div class="container-fluid">
+    <div class="navbar-footer">
+      <a class="navbar-brand tab_color"  href="/view">Table of Contents</a>
+      <p class="navbar-text navbar-right tab_color"><a  href="/" id="lesson_manager">Lesson Manager</a></p>
+    </div>
+  </div>
